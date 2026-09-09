@@ -19,7 +19,7 @@
 
 你好，我是 **never-die-cold**，一个硬件 + 科研复合向的开发者。
 
-一边在 FPGA 与嵌入式系统中打磨数字系统设计能力，一边用 Python 和树莓派为科研工作搭建趁手的工具——比如基于树莓派 4B 的二维材料能带结构可视化工具。相信扎实的工程能力与严谨的科学思维可以互相成就。
+一边在 FPGA 与嵌入式系统中打磨数字系统设计能力（Vivado / Zynq / RISC-V），一边用 Python 和树莓派为科研工作搭建趁手的工具——比如基于树莓派 4B 的二维材料能带结构可视化工具。科研方向聚焦**自旋电子学（Spintronics）**与 **SOT（自旋轨道矩）机制**，配合 COMSOL 多物理场仿真与 MuMax3 微磁学仿真（LLG 动力学数值求解）开展研究。相信扎实的工程能力与严谨的科学思维可以互相成就。
 
 ## 精选项目
 
@@ -50,10 +50,10 @@ FPGA 竞赛设计实践，覆盖数字系统设计与硬件描述语言开发。
 
 | 方向 | 技术与工具 |
 | --- | --- |
-| 硬件设计 | FPGA · Verilog · 数字电路 · Vivado |
-| 嵌入式系统 | Raspberry Pi · Linux · 传感器与接口 |
-| 科研计算 | Python · 数据处理 · 可视化 · Jupyter |
-| 工程效率 | Git · GitHub Actions · 文档写作 |
+| 编程语言 | Python（科学计算 · 数据分析 · 自动化）· MATLAB（数值计算 · 仿真）· Verilog（硬件描述语言）· RISC-V 指令集架构（处理器设计）· Basic Linux（Shell · 系统操作） |
+| EDA 与硬件设计 | Vivado（Xilinx FPGA 开发套件）· Zynq 开发（PS-PL 协同 · 嵌入式系统） |
+| 仿真与建模 | COMSOL（多物理场仿真）· MuMax3（微磁学仿真）· LLG 方程数值求解（Landau-Lifshitz-Gilbert 动力学） |
+| 研究方向 | 自旋电子学（Spintronics）· SOT 机制（Spin-Orbit Torque，自旋轨道矩） |
 
 ## GitHub 数据
 
