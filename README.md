@@ -17,9 +17,10 @@
 
 ## 关于我
 
-你好，我是 **never-die-cold**，一个硬件 + 科研复合向的开发者。
-
-一边在 FPGA 与嵌入式系统中打磨数字系统设计能力（Vivado / Zynq / RISC-V），一边用 Python 和树莓派为科研工作搭建趁手的工具——比如基于树莓派 4B 的二维材料能带结构可视化工具。科研方向聚焦**自旋电子学（Spintronics）**与 **SOT（自旋轨道矩）机制**，配合 COMSOL 多物理场仿真与 MuMax3 微磁学仿真（LLG 动力学数值求解）开展研究。相信扎实的工程能力与严谨的科学思维可以互相成就。
+你好，我是 **never-die-cold**，本名周生瑞，（他们也叫我鸡蛋🥚）一个南大在读集电院学生。
+参加一些比赛和科研中有一些微不足道的ability：
+ FPGA 嵌入式系统中的数字系统设计能力（Vivado / Zynq / RISC-V），以及一些基本的C和Python能力
+目前科研方向聚焦**自旋电子学（Spintronics）**与 **SOT（自旋轨道矩）机制**，正配合 COMSOL 多物理场仿真与 MuMax3 微磁学仿真（LLG 动力学数值求解）开展研究。
 
 ## 精选项目
 
@@ -29,7 +30,7 @@
 
 ### 1. [FPGA-Alittle-Design](https://github.com/never-die-cold/FPGA-Alittle-Design)
 
-FPGA 竞赛设计实践，覆盖数字系统设计与硬件描述语言开发。
+FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语言开发。
 
 `FPGA` `Digital Design` `Hardware`
 
@@ -38,7 +39,7 @@ FPGA 竞赛设计实践，覆盖数字系统设计与硬件描述语言开发。
 
 ### 2. [visualising-the-band-structure-of-2D-materials](https://github.com/never-die-cold/visualising-the-band-structure-of-2D-materials)
 
-基于树莓派 4B 搭建的二维材料能带结构可视化工具，服务科研数据处理与呈现。
+基于树莓派 4B 搭建的二维材料能带结构可视化工具（一个小小课程作业），科研数据处理与呈现。
 
 `Python` `Raspberry Pi` `Scientific Computing` `Visualization`
 
@@ -114,5 +115,5 @@ FPGA 竞赛设计实践，覆盖数字系统设计与硬件描述语言开发。
 
 <p align="center">
   <strong>正在寻找项目合作、竞赛组队与有意义的开源协作机会。</strong><br />
-  <sub>如果你对 FPGA、嵌入式系统或科研工具感兴趣，欢迎通过邮箱联系我。</sub>
+  <sub>如果你对我在做的东西感兴趣，欢迎通过邮箱联系我。</sub>
 </p>
