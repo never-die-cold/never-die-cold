@@ -1,0 +1,105 @@
+name: Update profile stats
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-readme-updates
+  cancel-in-progress: true
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out profile README
+        uses: actions/checkout@v4
+
+      - name: Fetch public GitHub metrics
+        id: stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_LOGIN: ${{ github.repository_owner }}
+        run: |
+          set -euo pipefail
+
+          repos=$(gh api --paginate "users/$PROFILE_LOGIN/repos?type=owner&per_page=100" \
+            --jq '.[].id' | wc -l | tr -d ' ')
+          stars=$(gh api --paginate "users/$PROFILE_LOGIN/repos?type=owner&per_page=100" \
+            --jq '.[].stargazers_count' | awk '{ total += $1 } END { print total + 0 }')
+          followers=$(gh api "users/$PROFILE_LOGIN" --jq '.followers')
+
+          from=$(date -u -d '1 year ago' '+%Y-%m-%dT%H:%M:%SZ')
+          to=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+          query='query($login: String!, $from: DateTime!, $to: DateTime!) { user(login: $login) { contributionsCollection(from: $from, to: $to) { totalCommitContributions } } }'
+          commits=$(gh api graphql \
+            -f query="$query" \
+            -f login="$PROFILE_LOGIN" \
+            -f from="$from" \
+            -f to="$to" \
+            --jq '.data.user.contributionsCollection.totalCommitContributions')
+
+          merged_prs=$(gh api --method GET search/issues \
+            -f "q=author:$PROFILE_LOGIN is:pr is:merged" \
+            -f per_page=1 \
+            --jq '.total_count')
+
+          {
+            echo "repos=$repos"
+            echo "stars=$stars"
+            echo "commits=$commits"
+            echo "merged_prs=$merged_prs"
+            echo "followers=$followers"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Write metrics into README
+        env:
+          REPOS: ${{ steps.stats.outputs.repos }}
+          STARS: ${{ steps.stats.outputs.stars }}
+          COMMITS: ${{ steps.stats.outputs.commits }}
+          MERGED_PRS: ${{ steps.stats.outputs.merged_prs }}
+          FOLLOWERS: ${{ steps.stats.outputs.followers }}
+        run: |
+          python3 <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          path = Path("README.md")
+          content = path.read_text(encoding="utf-8")
+          replacement = f'''<!-- STATS-START -->
+          <p align="center">
+          <strong>{os.environ["REPOS"]}</strong> 公开仓库 · <strong>{os.environ["STARS"]}</strong> Public Stars · <strong>{os.environ["COMMITS"]}</strong> 过去一年 Commits · <strong>{os.environ["MERGED_PRS"]}</strong> 合并 PR · <strong>{os.environ["FOLLOWERS"]}</strong> Followers
+          </p>
+          <p align="center"><sub>由 GitHub Actions 每周从 GitHub API 获取并更新</sub></p>
+          <!-- STATS-END -->'''
+          replacement = "\n".join(line.strip() for line in replacement.splitlines())
+          updated, count = re.subn(
+              r"<!-- STATS-START -->.*?<!-- STATS-END -->",
+              replacement,
+              content,
+              flags=re.DOTALL,
+          )
+          if count != 1:
+              raise SystemExit("Expected exactly one stats marker block")
+          path.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Commit updated metrics
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "Profile metrics are already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "ci: refresh profile metrics"
+          git push

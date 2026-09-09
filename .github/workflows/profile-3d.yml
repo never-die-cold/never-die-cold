@@ -1,0 +1,54 @@
+name: Generate profile assets
+
+on:
+  schedule:
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-assets
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Generate current-year Skyline
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          gh extension install github/gh-skyline
+          mkdir -p skyline
+          gh skyline --user "$OWNER" --year "$(date -u +%Y)" --output skyline/latest.stl
+
+      - name: Publish profile assets
+        run: |
+          mkdir -p /tmp/profile-assets
+          cp -R profile-3d-contrib /tmp/profile-assets/
+          cp skyline/latest.stl /tmp/profile-assets/latest.stl
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan profile-assets
+          git rm -rf .
+          mkdir -p profile-3d-contrib skyline
+          cp -R /tmp/profile-assets/profile-3d-contrib/. profile-3d-contrib/
+          cp /tmp/profile-assets/latest.stl skyline/latest.stl
+          git add profile-3d-contrib skyline/latest.stl
+          git commit -m "ci: refresh profile assets"
+          git push --force origin profile-assets

@@ -1,0 +1,72 @@
+name: Update Random Quote
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-readme-updates
+  cancel-in-progress: true
+
+jobs:
+  update-quote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pick random quote & update README
+        run: |
+          python3 <<'PYEOF'
+          import json, re
+          from datetime import date
+
+          with open('quotes.json', encoding='utf-8') as f:
+              quotes = json.load(f)
+
+          day = date.today().timetuple().tm_yday
+          quote = quotes[day % len(quotes)]
+
+          with open('README.md', encoding='utf-8') as f:
+              content = f.read()
+
+          text = quote['text'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+          author = quote['author']
+
+          new_section = f'''<!-- QUOTE-START -->
+          <p align="center">
+            <samp>
+              <i>"{text}"</i><br/>
+              <sub>— {author}</sub><br/>
+              <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
+            </samp>
+          </p>
+          <!-- QUOTE-END -->'''
+
+          new_section = '\n'.join(line.strip() for line in new_section.strip().splitlines())
+
+          pattern = r'<!-- QUOTE-START -->.*?<!-- QUOTE-END -->'
+          if not re.search(pattern, content, flags=re.DOTALL):
+              print("ERROR: QUOTE markers not found in README.md!")
+              exit(1)
+
+          content = re.sub(pattern, new_section, content, flags=re.DOTALL)
+
+          with open('README.md', 'w', encoding='utf-8') as f:
+              f.write(content)
+
+          print(f"Quote updated: \"{quote['text'][:60]}...\" — {quote['author']}")
+          PYEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --staged --quiet || git commit -m "ci: update random quote $(date +%Y-%m-%d)"
+          git push
