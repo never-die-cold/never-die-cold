@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"Genius is one percent inspiration and ninety-nine percent perspiration."</i><br/>
-<sub>— Thomas Edison</sub><br/>
+<i>"The present is theirs; the future, for which I really worked, is mine."</i><br/>
+<sub>— Nikola Tesla</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
