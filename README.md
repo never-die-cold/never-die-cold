@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"When in doubt, use brute force."</i><br/>
-<sub>— Ken Thompson</sub><br/>
+<i>"Programs must be written for people to read, and only incidentally for machines to execute."</i><br/>
+<sub>— Harold Abelson</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
