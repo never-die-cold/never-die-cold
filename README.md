@@ -60,7 +60,7 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 
 <!-- STATS-START -->
 <p align="center">
-<strong>5</strong> 公开仓库 · <strong>9</strong> Public Stars · <strong>312</strong> 过去一年 Commits · <strong>41</strong> 合并 PR · <strong>8</strong> Followers
+<strong>5</strong> 公开仓库 · <strong>8</strong> Public Stars · <strong>420</strong> 过去一年 Commits · <strong>58</strong> 合并 PR · <strong>8</strong> Followers
 </p>
 <p align="center"><sub>由 GitHub Actions 每周从 GitHub API 获取并更新</sub></p>
 <!-- STATS-END -->
