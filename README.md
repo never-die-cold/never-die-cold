@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"The best way to predict the future is to invent it."</i><br/>
-<sub>— Alan Kay</sub><br/>
+<i>"学而不思则罔，思而不学则殆。"</i><br/>
+<sub>— 孔子</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
