@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"纸上得来终觉浅，绝知此事要躬行。"</i><br/>
-<sub>— 陆游</sub><br/>
+<i>"不积跬步，无以至千里；不积小流，无以成江海。"</i><br/>
+<sub>— 荀子</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
