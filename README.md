@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"博观而约取，厚积而薄发。"</i><br/>
-<sub>— 苏轼</sub><br/>
+<i>"业精于勤，荒于嬉；行成于思，毁于随。"</i><br/>
+<sub>— 韩愈</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
