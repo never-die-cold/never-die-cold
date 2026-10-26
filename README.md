@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"Talk is cheap. Show me the code."</i><br/>
-<sub>— Linus Torvalds</sub><br/>
+<i>"Premature optimization is the root of all evil."</i><br/>
+<sub>— Donald Knuth</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
