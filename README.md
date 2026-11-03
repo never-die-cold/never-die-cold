@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"All science is either physics or stamp collecting."</i><br/>
-<sub>— Ernest Rutherford</sub><br/>
+<i>"Nothing in life is to be feared, it is only to be understood."</i><br/>
+<sub>— Marie Curie</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
