@@ -90,8 +90,8 @@ FPGA 竞赛设计实践（在做），覆盖数字系统设计与硬件描述语
 <!-- QUOTE-START -->
 <p align="center">
 <samp>
-<i>"Simplicity is prerequisite for reliability."</i><br/>
-<sub>— Edsger W. Dijkstra</sub><br/>
+<i>"We can only see a short distance ahead, but we can see plenty there that needs to be done."</i><br/>
+<sub>— Alan Turing</sub><br/>
 <sub><sup>🔄 Updates daily · 每日更新 · Powered by GitHub Actions</sup></sub>
 </samp>
 </p>
